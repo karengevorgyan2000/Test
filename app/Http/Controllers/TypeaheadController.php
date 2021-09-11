@@ -11,4 +11,11 @@ class TypeaheadController extends Controller
     {
         return view('welcome');
     }
+
+    public function autocompleteSearch(Request $request)
+    {
+        $query = $request->get('query');
+        $filterResult = User::where('name', 'LIKE', '%'. $query. '%')->get();
+        return response()->json($filterResult);
+    }
 }
