@@ -7,5 +7,8 @@ use App\Models\User;
 
 class TypeaheadController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('welcome');
+    }
 }
