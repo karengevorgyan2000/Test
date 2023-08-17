@@ -1,1 +1,0 @@
-# Laravel Auto Complete Search with Typeahead Js

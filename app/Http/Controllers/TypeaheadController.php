@@ -14,8 +14,12 @@ class TypeaheadController extends Controller
 
     public function autocompleteSearch(Request $request)
     {
-        $query = $request->get('query');
-        $filterResult = User::where('name', 'LIKE', '%'. $query. '%')->get();
+
+        $str = $request->get('search');
+        $filterResult = User::where('name_en', 'LIKE', '%'. $str. '%')
+                            ->orWhere('name_am', 'LIKE', '%'. $str. '%')
+                            ->orWhere('name_ru', 'LIKE', '%'. $str. '%')
+            ->pluck('name_en');
         return response()->json($filterResult);
     }
 }
